@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class Weapon : MonoBehaviour
@@ -9,7 +6,10 @@ public class Weapon : MonoBehaviour
     [SerializeField] Camera fPCamera;
     [SerializeField] float weaponDamage = 30f;
     [SerializeField] float rangeOfShot = 100f;
+    [SerializeField] GameObject standardHitEffect;
+    [SerializeField] GameObject enemyHitEffect;
     [SerializeField] UnityEvent onShoot;
+
 
     void Update()
     {
@@ -25,6 +25,12 @@ public class Weapon : MonoBehaviour
         ProcessRaycast();
     }
 
+    public void CreateHitImpact(RaycastHit hit , GameObject hitEffect)
+    {
+        GameObject impact = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal),hit.transform.parent);
+        Destroy(impact, .2f);
+    }
+
     private void ProcessRaycast()
     {
         RaycastHit hit;
@@ -32,10 +38,13 @@ public class Weapon : MonoBehaviour
         {
             print(hit.transform.name);
             EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
-            if (target != null)
+            if (target == null)
             {
-                target.TakeDamage(weaponDamage);
+                CreateHitImpact(hit, standardHitEffect);
+                return;
             }
+            CreateHitImpact(hit, enemyHitEffect);
+            target.TakeDamage(weaponDamage, hit.point);
         }
         else
         {
