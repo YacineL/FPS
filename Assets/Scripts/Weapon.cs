@@ -44,7 +44,7 @@ public class Weapon : MonoBehaviour
                 return;
             }
             CreateHitImpact(hit, enemyHitEffect);
-            target.TakeDamage(weaponDamage, hit.point);
+            target.TakeDamage(weaponDamage);
         }
         else
         {

@@ -2238,6 +2238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 456086}
   - component: {fileID: 11405670}
+  - component: {fileID: 1219583375212692359}
   m_Layer: 8
   m_Name: NewGun_auto
   m_TagString: Weapon
@@ -2279,9 +2280,10 @@ MonoBehaviour:
   mls: {fileID: 0}
   walkingSpeed: 3
   runningSpeed: 5
-  bulletsIHave: 9999
+  bulletsIHave: 80
   bulletsInTheGun: 80
   amountOfBulletsPerLoad: 80
+  bulletDamage: 30
   currentGunPosition: {x: 0, y: 0, z: 0}
   restPlacePosition: {x: -0.07, y: -0.06, z: 0.42}
   aimPlacePosition: {x: 0, y: -0.03, z: 0.3}
@@ -2345,6 +2347,26 @@ MonoBehaviour:
   reloadAnimationName: Player_Reload
   aimingAnimationName: Player_AImpose
   meeleAnimationName: Character_Malee
+--- !u!114 &1219583375212692359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08b72f6c9029c6246b331b797304a633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fPCamera: {fileID: 0}
+  weaponDamage: 30
+  rangeOfShot: 100
+  standardHitEffect: {fileID: 0}
+  enemyHitEffect: {fileID: 0}
+  onShoot:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &170420
 GameObject:
   m_ObjectHideFlags: 0

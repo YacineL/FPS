@@ -25,8 +25,10 @@ public class GunScript : MonoBehaviour {
 	public float bulletsInTheGun = 5;
 	[Tooltip("Preset value to tell how much bullets can one magazine carry.")]
 	public float amountOfBulletsPerLoad = 5;
+    [Tooltip("Preset value to tell how much damage one bullet can make")]
+    public float bulletDamage = 30;
 
-	private Transform player;
+    private Transform player;
 	private Camera cameraComponent;
 	private Transform gunPlaceHolder;
 
@@ -217,7 +219,7 @@ public class GunScript : MonoBehaviour {
 	*/
 	void MeeleAttack(){	
 
-		if(Input.GetKeyDown(KeyCode.Q) && !meeleAttack){			
+		if(Input.GetKeyDown(KeyCode.A) && !meeleAttack){			
 			StartCoroutine("AnimationMeeleAttack");
 		}
 	}
