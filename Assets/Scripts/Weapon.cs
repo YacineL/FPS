@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] GameObject enemyHitEffect;
     [SerializeField] UnityEvent onShoot;
 
+    public float WeaponDamage { get => weaponDamage; set => weaponDamage = value; }
 
     void Update()
     {
@@ -44,7 +45,7 @@ public class Weapon : MonoBehaviour
                 return;
             }
             CreateHitImpact(hit, enemyHitEffect);
-            target.TakeDamage(weaponDamage);
+            target.TakeDamage(WeaponDamage);
         }
         else
         {
