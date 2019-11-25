@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     bool isProvoked = false;
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -65,5 +66,9 @@ public class EnemyAI : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, chaseDistance);
+    }
+    public void OnDamageTaken()
+    {
+        isProvoked = true;
     }
 }

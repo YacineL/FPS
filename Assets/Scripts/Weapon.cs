@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class Weapon : MonoBehaviour
@@ -8,22 +9,37 @@ public class Weapon : MonoBehaviour
     [SerializeField] float rangeOfShot = 100f;
     [SerializeField] GameObject standardHitEffect;
     [SerializeField] GameObject enemyHitEffect;
+    [SerializeField] Ammo ammoSlot;
+    [SerializeField] AmmoType ammoType;
+    [SerializeField] float timeBetweenShots = 0.5f;
+    
+    
     [SerializeField] UnityEvent onShoot;
+    
+
+    bool canShoot = true;
 
     public float WeaponDamage { get => weaponDamage; set => weaponDamage = value; }
 
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if (Input.GetMouseButtonDown(0) && canShoot == true)
         {
-            Shoot();
+            StartCoroutine(Shoot());
         }
     }
 
-    private void Shoot()
+    IEnumerator Shoot()
     {
-        onShoot.Invoke();
-        ProcessRaycast();
+        canShoot = false;
+        if (ammoSlot.GetCurrentAmmo(ammoType) > 0)
+        {
+            onShoot.Invoke();
+            ProcessRaycast();
+            //ammoSlot.ReduceCurrentAmmo();
+        }
+        yield return new WaitForSeconds(timeBetweenShots);
+        canShoot = true;
     }
 
     public void CreateHitImpact(RaycastHit hit , GameObject hitEffect)

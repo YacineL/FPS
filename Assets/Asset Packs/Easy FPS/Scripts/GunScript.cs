@@ -259,7 +259,7 @@ public class GunScript : MonoBehaviour {
 	 * After calculation the recoil amount are decreased to 0.
 	 */
 	void PositionGun(){
-		transform.position = Vector3.SmoothDamp(transform.position,
+		if (transform.position != null) transform.position = Vector3.SmoothDamp(transform.position,
 			mainCamera.transform.position  - 
 			(mainCamera.transform.right * (currentGunPosition.x + currentRecoilXPos)) + 
 			(mainCamera.transform.up * (currentGunPosition.y+ currentRecoilYPos)) + 
