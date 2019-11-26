@@ -3,6 +3,7 @@
 public class EnemyAttack : MonoBehaviour
 {
     PlayerHealth target;
+    [SerializeField] float attackRange = 2f;
     [SerializeField] float damage = 40f;
 
     void Start()
@@ -13,7 +14,9 @@ public class EnemyAttack : MonoBehaviour
     public void AttackHitEvent()
     {
         if (target == null) return;
-        target.TakeDamage(damage);
-        Debug.Log("bang bang");
+        if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
+        {
+            target.TakeDamage(damage);
+        } 
     }
 }
