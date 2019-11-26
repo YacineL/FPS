@@ -27,6 +27,7 @@ public class GunScript : MonoBehaviour {
 	public float amountOfBulletsPerLoad = 5;
     [Tooltip("Preset value to tell how much damage one bullet can make")]
     public float bulletDamage = 30;
+    
 
     private Transform player;
 	private Camera cameraComponent;
@@ -454,12 +455,19 @@ public class GunScript : MonoBehaviour {
 	}
 
 
-
-	/*
+    /*
+	* Method that increases the amount of bullets the player has.
+	*/
+    public void IncreaseBulletsAmount(float amount)
+    {
+        bulletsIHave += amount;
+    }
+    
+    /*
 	* Reloading, setting the reloading to animator,
 	* Waiting for 2 seconds and then seeting the reloaded clip.
 	*/
-	[Header("reload time after anima")]
+    [Header("reload time after anima")]
 	[Tooltip("Time that passes after reloading. Depends on your reload animation length, because reloading can be interrupted via meele attack or running. So any action before this finishes will interrupt reloading.")]
 	public float reloadChangeBulletsTime;
 	IEnumerator Reload_Animation(){

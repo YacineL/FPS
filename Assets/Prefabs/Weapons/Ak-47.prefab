@@ -145,6 +145,7 @@ MonoBehaviour:
   standardHitEffect: {fileID: 0}
   enemyHitEffect: {fileID: 0}
   ammoSlot: {fileID: 0}
+  ammoType: 0
   timeBetweenShots: 0.1
   onShoot:
     m_PersistentCalls:
@@ -182,6 +183,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onAmmoDecrease:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7739373617945812876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b740d903615334694dceee459acb16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoAmount: 10
+  ammoSlots: []
 --- !u!1001 &2456540582671889851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -210,7 +214,7 @@ PrefabInstance:
     - target: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0026
+      value: -0.002
       objectReference: {fileID: 0}
     - target: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813,
         type: 3}
@@ -220,7 +224,7 @@ PrefabInstance:
     - target: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.039
+      value: 0.976
       objectReference: {fileID: 0}
     - target: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813,
         type: 3}

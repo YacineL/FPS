@@ -15,7 +15,13 @@ public class Weapon : MonoBehaviour
     
     
     [SerializeField] UnityEvent onShoot;
-    
+    [SerializeField] AmmoDecreaseEvent onAmmoDecrease;
+
+    [System.Serializable]
+    public class AmmoDecreaseEvent : UnityEvent<AmmoType>
+    {
+    }
+
 
     bool canShoot = true;
 
@@ -35,6 +41,7 @@ public class Weapon : MonoBehaviour
         if (ammoSlot.GetCurrentAmmo(ammoType) > 0)
         {
             onShoot.Invoke();
+            onAmmoDecrease.Invoke(ammoType);
             ProcessRaycast();
             //ammoSlot.ReduceCurrentAmmo();
         }
