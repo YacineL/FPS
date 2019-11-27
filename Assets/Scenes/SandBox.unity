@@ -1247,7 +1247,7 @@ PrefabInstance:
     - target: {fileID: 3858097593106058370, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858097593106058381, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
@@ -1712,14 +1712,19 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.03
       objectReference: {fileID: 0}
-    - target: {fileID: 5427112, guid: c391f12a928274acab8576bb6030641d, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 431846, guid: c391f12a928274acab8576bb6030641d, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.493
       objectReference: {fileID: 0}
+    - target: {fileID: 11415148, guid: c391f12a928274acab8576bb6030641d, type: 3}
+      propertyPath: meleeAttackDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415148, guid: c391f12a928274acab8576bb6030641d, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 6594286762264217519, guid: 2071b9e32a4f6f34e825ebe83f1eddaf,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c391f12a928274acab8576bb6030641d, type: 3}
 --- !u!4 &266151543 stripped
@@ -1748,7 +1753,7 @@ PrefabInstance:
     - target: {fileID: 3858097593106058370, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858097593106058381, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
@@ -2358,7 +2363,7 @@ PrefabInstance:
     - target: {fileID: 3858097593106058370, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858097593106058381, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
@@ -3495,7 +3500,7 @@ PrefabInstance:
     - target: {fileID: 3858097593106058370, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858097593106058381, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
@@ -4233,7 +4238,7 @@ PrefabInstance:
     - target: {fileID: 3858097593106058370, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858097593106058381, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
@@ -4671,7 +4676,7 @@ PrefabInstance:
     - target: {fileID: 3858097593106058370, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858097593106058381, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
@@ -4811,7 +4816,7 @@ PrefabInstance:
     - target: {fileID: 3858097593106058370, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858097593106058381, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
@@ -5099,7 +5104,7 @@ PrefabInstance:
     - target: {fileID: 3858097593106058370, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858097593106058381, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
@@ -5940,7 +5945,7 @@ PrefabInstance:
     - target: {fileID: 3858097593106058370, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858097593106058381, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
@@ -7128,7 +7133,7 @@ PrefabInstance:
     - target: {fileID: 3858097593106058370, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858097593106058381, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
@@ -8815,7 +8820,7 @@ PrefabInstance:
     - target: {fileID: 3858097593106058370, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858097593106058381, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
@@ -11288,6 +11293,11 @@ PrefabInstance:
       propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6927503282456071909, guid: 98e33912b3ee7ed41b4d7a97d779a096,
+        type: 3}
+      propertyPath: healthPoints
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8479970579757798710, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
       propertyPath: m_Controller
@@ -12925,7 +12935,7 @@ PrefabInstance:
     - target: {fileID: 3858097593106058370, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858097593106058381, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
@@ -13055,7 +13065,7 @@ PrefabInstance:
     - target: {fileID: 3858097593106058370, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858097593106058381, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
@@ -13660,7 +13670,7 @@ PrefabInstance:
     - target: {fileID: 3858097593106058370, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858097593106058381, guid: 98e33912b3ee7ed41b4d7a97d779a096,
         type: 3}

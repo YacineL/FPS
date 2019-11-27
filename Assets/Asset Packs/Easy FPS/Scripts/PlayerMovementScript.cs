@@ -13,12 +13,14 @@ public class PlayerMovementScript : MonoBehaviour {
 	public float jumpForce = 500;
 	[Tooltip("Position of the camera inside the player")]
 	[HideInInspector]public Vector3 cameraPosition;
+    [Tooltip("Position of the camera inside the player")]
+    public float meleeAttackDamage = 20f;
 
-	/*
+    /*
 	 * Getting the Players rigidbody component.
 	 * And grabbing the mainCamera from Players child transform.
 	 */
-	void Awake(){
+    void Awake(){
 		rb = GetComponent<Rigidbody>();
 		cameraMain = transform.Find("Main Camera").transform;
 		bulletSpawn = cameraMain.Find ("BulletSpawn").transform;
@@ -287,13 +289,14 @@ public class PlayerMovementScript : MonoBehaviour {
 			|| Physics.Raycast (ray4, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray5, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray6, out hitInfo, 2f, ~ignoreLayer)
 			|| Physics.Raycast (ray7, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray8, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray9, out hitInfo, 2f, ~ignoreLayer)) {
 			//Debug.DrawRay (bulletSpawn.position, bulletSpawn.forward + (bulletSpawn.right*0.2f), Color.green, 0.0f);
-			if (hitInfo.transform.tag=="Dummie") {
+			if (hitInfo.transform.tag=="Enemy") {
 				Transform _other = hitInfo.transform.root.transform;
-				if (_other.transform.tag == "Dummie") {
-					print ("hit a dummie");
+				if (_other.transform.tag == "Enemy") {
+                    print ("hit a dummie");
 				}
 				InstantiateBlood(hitInfo,false);
-			}
+                hitInfo.transform.GetComponent<EnemyHealth>().TakeDamage(meleeAttackDamage);
+            }
 		}
 		yield return new WaitForEndOfFrame ();
 	}
