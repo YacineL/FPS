@@ -327,6 +327,7 @@ MonoBehaviour:
   cameraMain: {fileID: 0}
   jumpForce: 15000
   cameraPosition: {x: 0, y: 0, z: 0}
+  meleeAttackDamage: 20
   maxSpeed: 5
   deaccelerationSpeed: 20
   accelerationSpeed: 100000
