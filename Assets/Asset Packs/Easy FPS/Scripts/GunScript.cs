@@ -11,7 +11,10 @@ public class GunScript : MonoBehaviour {
 	[HideInInspector]
 	public MouseLookScript mls;
 
-	[Header("Player movement properties")]
+    [Header("Player Prefab")]
+    public GameObject playerPrefab;
+
+    [Header("Player movement properties")]
 	[Tooltip("Speed is determined via gun because not every gun has same properties or weights so you MUST set up your speeds here")]
 	public int walkingSpeed = 3;
 	[Tooltip("Speed is determined via gun because not every gun has same properties or weights so you MUST set up your speeds here")]
@@ -441,6 +444,7 @@ public class GunScript : MonoBehaviour {
 
 				waitTillNextFire = 1;
 				bulletsInTheGun -= 1;
+                playerPrefab.GetComponent<GunInventory>().ammo -= 1;
 			}
 				
 			else{
@@ -461,6 +465,7 @@ public class GunScript : MonoBehaviour {
     public void IncreaseBulletsAmount(float amount)
     {
         bulletsIHave += amount;
+        playerPrefab.GetComponent<GunInventory>().ammo += amount;
     }
     
     /*

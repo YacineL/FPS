@@ -9,7 +9,9 @@ public enum MenuStyle{
 public class GunInventory : MonoBehaviour {
 	[Tooltip("Current weapon gameObject.")]
 	public GameObject currentGun;
-	private Animator currentHAndsAnimator;
+    [Tooltip("Player's ammo.")]
+    public float ammo;
+    private Animator currentHAndsAnimator;
 	private int currentGunCounter = 0;
 
 	[Tooltip("Put Strings of weapon objects from Resources Folder.")]
@@ -137,6 +139,16 @@ public class GunInventory : MonoBehaviour {
 
 				GameObject resource = (GameObject) Resources.Load(gunsIHave[_redniBroj].ToString());
 				currentGun = (GameObject) Instantiate(resource, transform.position, /*gameObject.transform.rotation*/Quaternion.identity);
+                currentGun.GetComponent<GunScript>().playerPrefab = this.gameObject;
+                if (ammo <= currentGun.GetComponent<GunScript>().amountOfBulletsPerLoad)
+                {
+                    currentGun.GetComponent<GunScript>().bulletsInTheGun = ammo;
+                }
+                else
+                {
+                    currentGun.GetComponent<GunScript>().bulletsInTheGun = currentGun.GetComponent<GunScript>().amountOfBulletsPerLoad;
+                    currentGun.GetComponent<GunScript>().bulletsIHave = ammo - currentGun.GetComponent<GunScript>().amountOfBulletsPerLoad;
+                }
 				AssignHandsAnimator(currentGun);
 			}
 			else if(currentGun.name.Contains("Sword")){
@@ -155,9 +167,19 @@ public class GunInventory : MonoBehaviour {
 		}
 		else{
 			GameObject resource = (GameObject) Resources.Load(gunsIHave[_redniBroj].ToString());
-			currentGun = (GameObject) Instantiate(resource, transform.position, /*gameObject.transform.rotation*/Quaternion.identity);
+            currentGun = (GameObject) Instantiate(resource, transform.position, /*gameObject.transform.rotation*/Quaternion.identity);
+            currentGun.GetComponent<GunScript>().playerPrefab = this.gameObject;
+            if (ammo <= currentGun.GetComponent<GunScript>().amountOfBulletsPerLoad)
+            {
+                currentGun.GetComponent<GunScript>().bulletsInTheGun = ammo;
+            }
+            else
+            {
+                currentGun.GetComponent<GunScript>().bulletsInTheGun = currentGun.GetComponent<GunScript>().amountOfBulletsPerLoad;
+                currentGun.GetComponent<GunScript>().bulletsIHave = ammo - currentGun.GetComponent<GunScript>().amountOfBulletsPerLoad;
+            }
 
-			AssignHandsAnimator(currentGun);
+            AssignHandsAnimator(currentGun);
 		}
 
 
