@@ -87,13 +87,17 @@ public class GunScript : MonoBehaviour {
 	Update loop calling for methods that are descriped below where they are initiated.
 	*/
 	void Update(){
-
-		Animations();
+        if (playerPrefab.GetComponent<PlayerHealth>().IsDead())
+        {
+            return;
+        }
+        Animations();
 
 		GiveCameraScriptMySensitvity();
 
 		PositionGun();
 
+        
 		Shooting();
 		MeeleAttack();
 		LockCameraWhileMelee ();
