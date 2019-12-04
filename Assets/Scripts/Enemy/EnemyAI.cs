@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] float chaseDistance = 10f;
     [SerializeField] float turnSpeed = 5f;
+    [SerializeField] UnityEvent onDamage;
 
     NavMeshAgent navMeshAgent;
     float distanceToTarget = Mathf.Infinity;
@@ -79,5 +81,6 @@ public class EnemyAI : MonoBehaviour
     public void OnDamageTaken()
     {
         isProvoked = true;
+        onDamage.Invoke();
     }
 }

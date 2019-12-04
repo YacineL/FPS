@@ -17,7 +17,7 @@ public class EnemyAttack : MonoBehaviour
         if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
         {
             target.TakeDamage(damage);
+            target.GetComponent<DamageDisplay>().ShowDamageImpact();
         }
-        target.GetComponent<DamageDisplay>().ShowDamageImpact();
     }
 }
