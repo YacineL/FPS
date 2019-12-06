@@ -13,6 +13,7 @@ public class DeathHandler : MonoBehaviour
 
     public IEnumerator HandleDeath()
     {
+        BroadcastMessage("MuteSFX");
         yield return new WaitForSeconds(waitingTime);
         gameOverCanvas.enabled = true;
         Time.timeScale = 0;

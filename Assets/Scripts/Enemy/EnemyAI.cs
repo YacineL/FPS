@@ -1,13 +1,17 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
 
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] float chaseDistance = 10f;
     [SerializeField] float turnSpeed = 5f;
-    [SerializeField] UnityEvent onDamage;
+    [SerializeField] AudioSource idleSound;
+    [SerializeField] AudioSource damageSound;
+    [SerializeField] AudioSource chaseSound;
+    [SerializeField] AudioSource attackSound;
+    [SerializeField] AudioSource deathSound;
 
     NavMeshAgent navMeshAgent;
     float distanceToTarget = Mathf.Infinity;
@@ -27,6 +31,9 @@ public class EnemyAI : MonoBehaviour
         {
             enabled = false;
             navMeshAgent.enabled = false;
+            chaseSound.Stop();
+            idleSound.Stop();
+            attackSound.Stop();
             return;
         }
         distanceToTarget = Vector3.Distance(target.position, transform.position);
@@ -38,6 +45,15 @@ public class EnemyAI : MonoBehaviour
         else if (distanceToTarget <= chaseDistance)
         {
             isProvoked = true;
+        }
+        if(!idleSound.isPlaying && !enemyHealth.IsDead)
+        {
+            idleSound.PlayDelayed(1f);
+        }
+
+        /**/if(target.GetComponent<PlayerHealth>().IsDead())
+        {
+            MuteSFX();
         }
     }
 
@@ -66,11 +82,23 @@ public class EnemyAI : MonoBehaviour
         GetComponent<Animator>().SetBool("attack", false);
         GetComponent<Animator>().SetTrigger("move");
         navMeshAgent.SetDestination(target.position);
+        if(!chaseSound.isPlaying)
+        {
+            idleSound.Stop();
+            attackSound.Stop();
+            chaseSound.Play();
+        }
     }
 
     private void AttackTarget()
     {
         GetComponent<Animator>().SetBool("attack", true);
+        if (!attackSound.isPlaying)
+        {
+            idleSound.Stop();
+            chaseSound.Stop();
+            attackSound.Play();
+        }
     }
 
         private void OnDrawGizmosSelected()
@@ -78,9 +106,27 @@ public class EnemyAI : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, chaseDistance);
     }
+    public void MuteSFX()
+    {
+        idleSound.Stop();
+        chaseSound.Stop();
+        attackSound.Stop();
+        damageSound.Stop();
+    }
     public void OnDamageTaken()
     {
         isProvoked = true;
-        onDamage.Invoke();
+        if (!damageSound.isPlaying)
+        {
+            idleSound.Stop();
+            chaseSound.Stop();
+            attackSound.Stop();
+            if(enemyHealth.IsDead)
+            {
+                deathSound.Play();
+                return;
+            }
+            damageSound.Play();
+        }
     }
 }

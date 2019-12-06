@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f17a2d917929f545b2e208454e3819e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoAmount: 5
+  ammoAmount: 50
   ammoType: 0
 --- !u!23 &5057992392130010087
 MeshRenderer:

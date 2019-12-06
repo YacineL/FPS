@@ -16,7 +16,6 @@ public class EnemyHealth : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        BroadcastMessage("OnDamageTaken");
         healthPoints -= damage;
         if (healthPoints <= 0)
         {
@@ -31,7 +30,8 @@ public class EnemyHealth : MonoBehaviour
                 return;
             }
         }
-        if(animator.GetCurrentAnimatorStateInfo(0).IsName("3-great_damage_torso_front"))
+        BroadcastMessage("OnDamageTaken");
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("3-great_damage_torso_front"))
         {
             animator.ResetTrigger("damage");
         }

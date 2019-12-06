@@ -61,7 +61,7 @@ public class Weapon : MonoBehaviour
         if (Physics.Raycast(fPCamera.transform.position, fPCamera.transform.forward, out hit, rangeOfShot))
         {
             print(hit.transform.name);
-            EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+            EnemyHealth target = hit.transform.GetComponentInParent<EnemyHealth>();
             if (target == null)
             {
                 CreateHitImpact(hit, standardHitEffect);

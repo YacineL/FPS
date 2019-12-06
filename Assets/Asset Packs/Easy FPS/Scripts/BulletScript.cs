@@ -33,7 +33,7 @@ public class BulletScript : MonoBehaviour {
 				}
 				if(hit.transform.tag == "Enemy"){
                     GameObject weapon = GameObject.FindGameObjectWithTag("Weapon");
-                    EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+                    EnemyHealth target = hit.transform.GetComponentInParent<EnemyHealth>();
                     target.TakeDamage(weapon.GetComponent<GunScript>().bulletDamage);
                     Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
 					Destroy(gameObject);

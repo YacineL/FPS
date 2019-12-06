@@ -15,6 +15,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	[HideInInspector]public Vector3 cameraPosition;
     [Tooltip("Position of the camera inside the player")]
     public float meleeAttackDamage = 20f;
+    public PlayerHealth player;
 
     /*
 	 * Getting the Players rigidbody component.
@@ -92,8 +93,19 @@ public class PlayerMovementScript : MonoBehaviour {
 	/*
 	* Update loop calling other stuff
 	*/
+    public void MuteSFX()
+    {
+        _freakingZombiesSound.Stop();
+        _hitSound.Stop();
+        _jumpSound.Stop();
+        _runSound.Stop();
+        _walkSound.Stop();
+    }
 	void Update(){
-		
+		if(player.IsDead())
+        {
+            MuteSFX();
+        }
 
 		Jumping ();
 
@@ -288,14 +300,11 @@ public class PlayerMovementScript : MonoBehaviour {
 		if (Physics.Raycast (ray1, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray2, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray3, out hitInfo, 2f, ~ignoreLayer)
 			|| Physics.Raycast (ray4, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray5, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray6, out hitInfo, 2f, ~ignoreLayer)
 			|| Physics.Raycast (ray7, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray8, out hitInfo, 2f, ~ignoreLayer) || Physics.Raycast (ray9, out hitInfo, 2f, ~ignoreLayer)) {
-			//Debug.DrawRay (bulletSpawn.position, bulletSpawn.forward + (bulletSpawn.right*0.2f), Color.green, 0.0f);
+            //Debug.DrawRay (bulletSpawn.position, bulletSpawn.forward + (bulletSpawn.right*0.2f), Color.green, 0.0f);
 			if (hitInfo.transform.tag=="Enemy") {
 				Transform _other = hitInfo.transform.root.transform;
-				if (_other.transform.tag == "Enemy") {
-                    print ("hit a dummie");
-				}
+                hitInfo.transform.GetComponentInParent<EnemyHealth>().TakeDamage(meleeAttackDamage);
 				InstantiateBlood(hitInfo,false);
-                hitInfo.transform.GetComponent<EnemyHealth>().TakeDamage(meleeAttackDamage);
             }
 		}
 		yield return new WaitForEndOfFrame ();
