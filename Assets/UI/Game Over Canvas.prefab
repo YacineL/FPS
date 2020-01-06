@@ -348,7 +348,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You Die
+  m_text: Pause
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d1dff7f9dc37f7f44810298d24cb1fe5, type: 2}
   m_sharedMaterial: {fileID: -2724827232012251632, guid: d1dff7f9dc37f7f44810298d24cb1fe5,

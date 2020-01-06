@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
+
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovementScript : MonoBehaviour {
 	Rigidbody rb;
@@ -16,12 +16,15 @@ public class PlayerMovementScript : MonoBehaviour {
     [Tooltip("Position of the camera inside the player")]
     public float meleeAttackDamage = 20f;
     public PlayerHealth player;
+    public GameObject gameOverCanvas;
+    private bool isPaused = false;
 
     /*
 	 * Getting the Players rigidbody component.
 	 * And grabbing the mainCamera from Players child transform.
 	 */
     void Awake(){
+        AudioListener.pause = false;
 		rb = GetComponent<Rigidbody>();
 		cameraMain = transform.Find("Main Camera").transform;
 		bulletSpawn = cameraMain.Find ("BulletSpawn").transform;
@@ -102,10 +105,7 @@ public class PlayerMovementScript : MonoBehaviour {
         _walkSound.Stop();
     }
 	void Update(){
-		if(player.IsDead())
-        {
-            MuteSFX();
-        }
+        PauseMenu();
 
 		Jumping ();
 
@@ -116,10 +116,36 @@ public class PlayerMovementScript : MonoBehaviour {
 
 	}//end update
 
-	/*
+    private void PauseMenu()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(!isPaused)
+            {
+                AudioListener.pause = true;
+                gameOverCanvas.SetActive(true);
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                isPaused = true;
+            }
+            else 
+            {
+                AudioListener.pause = false;
+                gameOverCanvas.SetActive(false);
+                Time.timeScale = 1;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                isPaused = false;
+            }
+            
+        }
+    }
+
+    /*
 	* Checks if player is grounded and plays the sound accorindlgy to his speed
 	*/
-	void WalkingSound(){
+    void WalkingSound(){
 		if (_walkSound && _runSound) {
 			if (RayCastGrounded ()) { //for walk sounsd using this because suraface is not straigh			
 				if (currentSpeed > 1) {
